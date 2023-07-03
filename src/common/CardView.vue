@@ -11,7 +11,6 @@ div{
     margin: 10px 10px;
     border-radius: 20px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    justify-content: center;
     align-items: center;
     text-align:center;
 }

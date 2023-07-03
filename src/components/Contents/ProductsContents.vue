@@ -1,10 +1,8 @@
 <template>
     <h2>상품 목록 페이지</h2>
-    <div v-for="item of itemList" :key="item.id" @click="onClick(item)">
-        <card-view>
-            <strong>{{item.name}}</strong>{{ item.price }}원
-        </card-view>
-    </div>
+    <card-view class="product-card__container" v-for="item of itemList" :key="item.id" @click="onClick(item)">
+        <strong>{{item.name}}</strong>{{ item.price }}원
+    </card-view>
     <div>
         <h4>장바구니 내역</h4>
         <ul>
@@ -53,6 +51,9 @@ const onPay = () => {
 <style scoped>
 h2{
     margin: 0;
+}
+.product-card__container{
+    background-color: pink;
 }
 div{
     display: grid;
