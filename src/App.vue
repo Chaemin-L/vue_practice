@@ -19,8 +19,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 main {
     background-color: beige;
+}
+button:hover{
+  cursor: pointer;
+}
+button:active{
+  cursor: default;
 }
 </style>
