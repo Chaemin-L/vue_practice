@@ -24,9 +24,12 @@
 </template>
 
 <script setup>
-import {ref, computed} from 'vue';
+import {ref, computed, watch} from 'vue';
 import {useLoginStore} from '../../store/store';
+import {useRouter} from 'vue-router';
 import {storeToRefs} from 'pinia'
+
+const router = useRouter();
 
 const idInput = ref(null);
 const pwInput = ref(null);
@@ -36,6 +39,15 @@ const globalEmailValue = computed(()=>store.email);
 const globalPasswordValue = computed(()=>store.password);
 const {isValidEmail, getNickname} = storeToRefs(store);
 const {login, logout} = store; 
+
+//이메일 검증 후, 상품 페이지로 이동
+watch(isValidEmail, ()=>{
+    if(isValidEmail) {
+        setTimeout(()=>{
+            router.push('/products')
+        }, 3000);
+    }
+});
 
 </script>
 
