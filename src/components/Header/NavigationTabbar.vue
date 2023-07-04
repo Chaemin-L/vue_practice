@@ -1,6 +1,6 @@
 <template>
     <div id="navigation-bar">        
-        <div class="navigation-link" v-for="tab of tabList" :key="tab.url"><router-link :to="tab.url">{{tab.name}}</router-link></div>
+        <div class="navigation-link" v-for="tab of tabList" :key="tab.url"><router-link :to="{name:tab.url}">{{tab.name}}</router-link></div>
     </div>
 </template>
 
