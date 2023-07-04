@@ -1,16 +1,17 @@
 <template>
     <header>
         <h2>LOGO</h2>
-        <div v-show="isValidEmail" @click="onLogout">로그아웃</div>
+        <div v-show="isValidEmail&&route.name!=='home'" @click="onLogout">로그아웃</div>
     </header>
 </template>
 
 <script setup>
 import {computed} from 'vue';
-import {useRouter} from 'vue-router';
+import {useRouter, useRoute} from 'vue-router';
 import { useLoginStore } from '@/store/store';
 
 const router = useRouter();
+const route = useRoute();
 const store = useLoginStore();
 const isValidEmail = computed(()=>store.isValidEmail);
 
