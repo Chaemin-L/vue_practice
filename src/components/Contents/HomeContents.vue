@@ -1,8 +1,43 @@
 <template>
     <div>
         <h2>홈 페이지</h2>
+        <div>
+            <h4>로그인</h4>
+            <div>
+                <input type="text" v-model="idInput">
+                <input type="password" v-model="pwInput">
+            </div>
+            <div>
+                <button @click="login(idInput, pwInput)">로그인</button>
+                <button @click="logout">로그아웃</button>
+            </div>
+            <div>
+                <h4>전역 상태</h4>
+                <div>이메일 <strong>{{ globalEmailValue }}</strong></div>
+                <div>비밀번호 <strong>{{ globalPasswordValue }}</strong></div>
+                <div v-show="isValidEmail">
+                    <span><strong>{{ getNickname }}</strong>님! 반갑습니다. </span>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
+
+<script setup>
+import {ref, computed} from 'vue';
+import {useLoginStore} from '../../store/store';
+import {storeToRefs} from 'pinia'
+
+const idInput = ref(null);
+const pwInput = ref(null);
+
+const store = useLoginStore();
+const globalEmailValue = computed(()=>store.email);
+const globalPasswordValue = computed(()=>store.password);
+const {isValidEmail, getNickname} = storeToRefs(store);
+const {login, logout} = store; 
+
+</script>
 
 <style scoped>
 h2{

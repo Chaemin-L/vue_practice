@@ -1,7 +1,7 @@
 <template>
     <h2>거래내역 페이지</h2>
-    <card-view class="transaction-card__container" v-for="transaction of shortenDateTransactions" :key="transaction.id">
-        <div class="transaction-card__container">
+    <card-view v-for="transaction of shortenDateTransactions" :key="transaction.id">
+        <div class="transaction-card__container ">
             <div>
                 {{transaction.date}}
             </div>
@@ -27,21 +27,19 @@ const transactionList = toRef(JSON.parse(localStorage.getItem('transaction'))||[
 const shortenDateTransactions = computed(()=>{
     return transactionList.value.map(trans=>({...trans, date:trans.date.slice(0,10)}));
 })
-
-
-
-
 </script>
 
 <style scoped>
 .transaction-card__container{
-    width: 90%;
+    width: 100%;
     display: flex;
     padding: 10px 20px !important;
     background-color: lightsalmon;
+    border-radius: 20px;
     justify-content: space-between;
     align-items: center;
 }
+
 .transaction-card__list{
     display: flex;
     min-width: 130px;
